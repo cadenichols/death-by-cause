@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Deaths by Cause in Califoria
+    link(rel='stylesheet', href='/style.css')
+  body
+    h1 Death by Zip Code
+    label Year
+    select#year-select
+      - var y = 1999
+      while y < 2013
+        option= y++
+
+    label Cause of Death
+    select#cause-select
+      - var causes = [{value:'htd', name:'Diseases of the Heart'},{value:'can', name:'Malignant Neoplasms(Cancer)'},{value:'stk', name:'Cerebrovascular Disease(Stroke)'},{value:'cld', name:'Chronic Lower Respiratory Desease(CLRD)'}, {value:'inj', name:'Unintentional Injuries'}, {value:'pnf', name:'Pneumonia and Influenza'}, {value:'dia', name:'Diabetes Mellitus'}, {value:'alz', name:"Alzheimer's Disease"}, {value:'liv', name:'Chronic Liver Disease and Cirrhosis'}, {value:'sui', name:'Suicide'}, {value:'hyp', name:'Essential Hypertension & Hypertensive Renal Disease'}, {value:'hom', name:'Homocide'}, {value:'oth', name:'All Other Causes'}, {value:'unk', name:'Unknown'}]
+      - each o in causes
+        option(value=o.value)= o.name
+
+    button#get-data Get Data
+
+    script(src='/vendor/jquery/dist/jquery.js')
+    script(src='/main.js')
+    script(src="/vendor/lodash/lodash.js")
